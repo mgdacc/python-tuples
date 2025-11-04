@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Interactiva: Tuplas en Python</title>
+    <style>
+        /* === ESTILOS GLOBALES Y DE ESCRITORIO === */
+        body {
+            font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0;
+            padding: 40px; display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; box-sizing: border-box; transition: padding 0.3s ease;
+        }
+
+        .slideshow-container { position: relative; width: 90%; max-width: 960px; }
+        
+        .slide {
+            display: none; background-color: #fff; border: 1px solid #ccc;
+            height: 540px; padding: 40px 60px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            flex-direction: column; justify-content: center; position: relative;
+            box-sizing: border-box;
+        }
+
+        .fade { animation-name: fade; animation-duration: 0.5s; }
+        @keyframes fade { from {opacity: .4} to {opacity: 1} }
+
+        .prev, .next {
+            cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+            width: 50px; height: 50px; background-color: #cccccc; color: #333;
+            border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; font-size: 24px; transition: all 0.3s ease;
+            user-select: none; z-index: 10;
+        }
+
+        .prev { left: -70px; }
+        .next { right: -70px; }
+        .prev:hover, .next:hover { background-color: #aaaaaa; }
+
+        .slide h1 { font-size: 3.5em; text-align: center; border-bottom: 4px solid #11a800; padding-bottom: 20px; color: #005A9C; }
+        .slide h2 { font-size: 2.8em; margin-top: 0; margin-bottom: 30px; text-align: center; color: #005A9C; }
+        .single-content { text-align: center; }
+        .single-content p { font-size: 1.5em; color: #444; }
+        .single-content pre { font-size: 1.4em; display: inline-block; text-align: left; max-width: 100%; }
+        pre { background-color: #2d3436; color: #fff; padding: 15px; border-radius: 5px; font-size: 1.1em; white-space: pre-wrap; }
+        .footer { position: absolute; bottom: 20px; right: 40px; font-size: 1em; color: #888; }
+
+        /* === MEDIA QUERIES === */
+        @media screen and (max-width: 768px) {
+            body { padding: 15px; }
+            .slideshow-container { width: 100%; padding-bottom: 75px; }
+            .slide { height: auto; min-height: 75vh; padding: 20px 25px; }
+            .prev, .next { top: auto; bottom: 15px; width: 45px; height: 45px; }
+            .prev { left: 50%; transform: translateX(-110%); }
+            .next { left: 50%; transform: translateX(10%); right: auto; }
+            .slide h1 { font-size: 2.2em; }
+            .slide h2 { font-size: 1.8em; }
+            .single-content p { font-size: 1.1em; }
+            .single-content pre { font-size: 1em; }
+            .footer { font-size: 0.8em; right: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slideshow-container">
+        
+        <div class="slide fade">
+            <h1>Cheat Sheet de Python</h1>
+            <h2 style="color:#333; border:none;">Tuplas</h2>
+            <div class="footer">1 / 12</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>¿Qué es una Tupla?</h2>
+            <div class="single-content"><p>Una colección ordenada e <strong>inmutable</strong> de elementos. Como una lista que no se puede modificar.</p></div>
+            <div class="footer">2 / 12</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Crear una Tupla</h2>
+            <div class="single-content"><p>Se define con paréntesis <code>()</code>, separando los elementos con comas.</p><pre><code># Tupla de números
+numeros = (1, 2, 3)
+
+# Tupla de strings
+vocales = ('a', 'e', 'i', 'o', 'u')</code></pre></div>
+            <div class="footer">3 / 12</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Tupla de un solo elemento</h2>
+            <div class="single-content"><p>¡Importante! Debe llevar una coma al final para ser reconocida como tupla.</p><pre><code>tupla_correcta = (1,)
+print(type(tupla_correcta)) # <class 'tuple'>
+
+no_es_tupla = (1)
+print(type(no_es_tupla)) # <class 'int'></code></pre></div>
+            <div class="footer">4 / 12</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Acceder a Elementos</h2>
+            <div class="single-content"><p>Igual que las listas, se accede a un elemento por su índice.</p><pre><code>vocales = ('a', 'e', 'i', 'o', 'u')
+print(vocales[0])  # 'a'
+print(vocales[-1]) # 'u'</code></pre></div>
+            <div class="footer">5 / 12</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Slicing (Rebanado)</h2>
+            <div class="single-content"><p>También funciona igual que en las listas para obtener una sub-tupla.</p><pre><code>numeros = (0, 1, 2, 3, 4, 5)
+print(numeros[1:4]) # (1, 2, 3)</code></pre></div>
+            <div class="footer">6 / 12</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>La Inmutabilidad</h2>
+            <div class="single-content"><p>No se pueden añadir, eliminar o modificar elementos después de su creación.</p><pre><code>mi_tupla = (1, 2, 3)
+# Esto dará un error (TypeError)
+mi_tupla[0] = 99</code></pre></div>
+            <div class="footer">7 / 12</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>¿Por qué usar Tuplas?</h2>
+            <div class="single-content"><p>Para datos que no deben cambiar: coordenadas, constantes, claves de diccionario, etc.</p></div>
+            <div class="footer">8 / 12</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Método: <code>.count()</code></h2>
+            <div class="single-content"><p>Cuenta cuántas veces aparece un elemento en la tupla.</p><pre><code>mi_tupla = (1, 2, 2, 3, 2)
+print(mi_tupla.count(2)) # 3</code></pre></div>
+            <div class="footer">9 / 12</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Método: <code>.index()</code></h2>
+            <div class="single-content"><p>Devuelve el índice de la primera aparición de un elemento.</p><pre><code>mi_tupla = ('a', 'b', 'c', 'b')
+print(mi_tupla.index('b')) # 1</code></pre></div>
+            <div class="footer">10 / 12</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Desempaquetado (Unpacking)</h2>
+            <div class="single-content"><p>Permite asignar los elementos de una tupla a múltiples variables.</p><pre><code>coordenadas = (10, 20)
+x, y = coordenadas
+
+print(f"X: {x}, Y: {y}")</code></pre></div>
+            <div class="footer">11 / 12</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Recorrer una Tupla (Loop)</h2>
+            <div class="single-content"><p>Se usa un ciclo `for`, igual que con las listas.</p><pre><code>for vocal in ('a', 'e', 'i', 'o', 'u'):
+    print(vocal.upper())</code></pre></div>
+            <div class="footer">12 / 12</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <script>
+        let slideIndex = 1; showSlides(slideIndex);
+        function plusSlides(n) { showSlides(slideIndex += n); }
+        function showSlides(n) {
+            let i, slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = 1 } 
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+            slides[slideIndex - 1].style.display = "flex";
+        }
+    </script>
+
+</body>
+</html>
